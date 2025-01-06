@@ -54,11 +54,22 @@ const BootUpScreen: React.FC<BootUpScreenProps> = ({ onComplete }) => {
 
           if (i === messages.length - 1) {
             setIsFinished(true);
-            onComplete();
           }
         }
       })();
     }
+  }, [isFinished]);
+
+  React.useEffect(() => {
+    if (isFinished) {
+      window.addEventListener("keydown", onComplete);
+      window.addEventListener("click", onComplete);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", onComplete);
+      window.removeEventListener("click", onComplete);
+    };
   }, [onComplete, isFinished]);
 
   return (
