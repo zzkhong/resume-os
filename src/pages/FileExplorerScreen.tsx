@@ -5,23 +5,24 @@ import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
 import FolderIcon from "@/components/icon/FolderIcon";
 import FileIcon from "@/components/icon/FileIcon";
+import CopyrightFooter from "@/components/footer/Footer";
 
 const DesktopIcon = ({
   id,
   name,
   type,
-  onDoubleClick,
+  onClick,
 }: {
   id: string;
   name: string;
   type: "folder" | "file";
-  onDoubleClick: (id: string) => void;
+  onClick: (id: string) => void;
 }) => {
   const IconComponent = type === "folder" ? FolderIcon : FileIcon;
   return (
     <div
       className="flex flex-col items-center cursor-pointer hover:text-green-300 text-green-400"
-      onDoubleClick={() => onDoubleClick(id)}
+      onClick={() => onClick(id)}
     >
       <IconComponent title={name} />
     </div>
@@ -31,7 +32,7 @@ const DesktopIcon = ({
 const FileExplorerScreen = () => {
   const [isExplorerOpen, setExplorerOpen] = useState(false);
 
-  const handleDoubleClick = (id: string) => {
+  const handleClick = (id: string) => {
     if (id === "explorer") {
       setExplorerOpen(true);
     }
@@ -46,13 +47,13 @@ const FileExplorerScreen = () => {
           id="explorer"
           name="File Explorer"
           type="folder"
-          onDoubleClick={handleDoubleClick}
+          onClick={handleClick}
         />
         <DesktopIcon
           id="resume"
           name="Resume.txt"
           type="file"
-          onDoubleClick={() => {}}
+          onClick={() => {}}
         />
       </div>
 
@@ -64,23 +65,25 @@ const FileExplorerScreen = () => {
               id="file1"
               name="Resume.txt"
               type="file"
-              onDoubleClick={() => {}}
+              onClick={() => {}}
             />
             <DesktopIcon
               id="folder1"
               name="Projects"
               type="folder"
-              onDoubleClick={() => {}}
+              onClick={() => {}}
             />
             <DesktopIcon
               id="file2"
               name="Skills.pdf"
               type="file"
-              onDoubleClick={() => {}}
+              onClick={() => {}}
             />
           </div>
         </WindowBox>
       )}
+
+      <CopyrightFooter />
     </div>
   );
 };
