@@ -23,6 +23,7 @@ const TopBar = () => {
 
   const handleRestart = () => {
     setIsModalOpen(false);
+    localStorage.removeItem("hasSeenBootScreen");
     window.location.reload();
   };
 

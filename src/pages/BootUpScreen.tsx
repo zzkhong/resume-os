@@ -53,6 +53,7 @@ const BootUpScreen: React.FC<BootUpScreenProps> = ({ onComplete }) => {
           await delay(time);
 
           if (i === messages.length - 1) {
+            localStorage.setItem("hasSeenBootScreen", "true");
             setIsFinished(true);
           }
         }
