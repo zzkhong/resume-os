@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import BootUpScreen from "@/components/BootUpScreen";
+import BootUpScreen from "@/pages/BootUpScreen";
+import FileExplorerScreen from "@/pages/FileExplorerScreen";
 
 export default function Home() {
   const [bootComplete, setBootComplete] = React.useState<boolean>(false);
@@ -12,7 +13,11 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen relative">
-      <BootUpScreen onComplete={handleBootComplete} />
+      {bootComplete ? (
+        <FileExplorerScreen />
+      ) : (
+        <BootUpScreen onComplete={handleBootComplete} />
+      )}
     </div>
   );
 }
