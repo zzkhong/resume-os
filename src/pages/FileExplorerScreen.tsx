@@ -60,7 +60,7 @@ const FileExplorerScreen = () => {
 
   return (
     <div className="flex flex-col w-full h-full ">
-      <TopBar />
+      <TopBar onReset={() => setFiles(fileTree)} />
 
       <div className="flex-grow overflow-hidden relative">
         <DndContext

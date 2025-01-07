@@ -1,7 +1,16 @@
+interface FileTree {
+  name: string;
+  type: "folder" | "file" | "exe" | "github" | "linkedin" | "pdf";
+  position: {
+    x: number;
+    y: number;
+  };
+}
+
 export const fileTree: Record<string, FileTree> = {
   careers: {
     name: "Career",
-    type: "folder",
+    type: "file",
     position: {
       x: 20,
       y: 20,
@@ -41,11 +50,6 @@ export const fileTree: Record<string, FileTree> = {
   },
 };
 
-interface FileTree {
-  name: string;
-  type: "folder" | "file" | "exe" | "github" | "linkedin" | "pdf";
-  position: {
-    x: number;
-    y: number;
-  };
-}
+export const portfolioDir = {};
+
+export const contactDir = {};

@@ -1,9 +1,14 @@
 import React from "react";
 import dayjs from "dayjs";
+import { GrPowerReset } from "react-icons/gr";
 import { FiPower } from "react-icons/fi";
 import ConfirmDialog from "../dialog/ConfirmDialog";
 
-const TopBar = () => {
+interface TopBarProp {
+  onReset: () => void;
+}
+
+const TopBar: React.FC<TopBarProp> = ({ onReset }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(
     dayjs().format("DD-MMM-YY HH:mm")
@@ -40,10 +45,17 @@ const TopBar = () => {
         <div className="flex items-center space-x-2">
           <button
             onClick={handlePowerClick}
-            className="p-1 rounded-full hover:bg-gray-700 transition"
+            className="p-1 rounded-full hover:bg-gray-700 active:opacity-50 transition"
             aria-label="Power Menu"
           >
             <FiPower className="text-green-400 w-5 h-5" />
+          </button>
+          <button
+            onClick={onReset}
+            className="p-1 rounded-full hover:bg-gray-700 active:opacity-50 transition"
+            aria-label="Reset"
+          >
+            <GrPowerReset className="text-green-400 w-5 h-5" />
           </button>
         </div>
 
