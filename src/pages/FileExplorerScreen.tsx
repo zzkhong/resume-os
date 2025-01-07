@@ -20,6 +20,7 @@ import ContentCareer from "@/components/window/ContentCareer";
 import ContentContact from "@/components/window/ContentContact";
 import ContentReadMe from "@/components/window/ContentReadMe";
 import ContentTerminal from "@/components/window/ContentCopyright";
+import LoadingDialog from "@/components/dialog/LoadingDialog";
 
 const windowContent: Record<string, JSX.Element> = {
   career: <ContentCareer />,
@@ -33,6 +34,7 @@ const FileExplorerScreen = () => {
   const [focusWindow, setFocusWindow] = useState("");
 
   const [files, setFiles] = useState(getAdjustedFileTrees());
+  const [redirecting, setRedirecting] = useState<string>("");
 
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
@@ -52,7 +54,12 @@ const FileExplorerScreen = () => {
     const file = files[id];
 
     if (file.type === "github") {
-      window.open("https://github.com/zzkhong", "_blank");
+      // Fake Redirecting
+      setRedirecting("Opening GitHub...");
+      setTimeout(() => {
+        window.open("https://github.com/zzkhong", "_blank");
+        setRedirecting("");
+      }, 1500);
     } else {
       const windowId = `window-${id}`;
       const existingWindow = windows.find((window) => window.id === windowId);
@@ -161,6 +168,8 @@ const FileExplorerScreen = () => {
       </DndContext>
 
       <CopyrightFooter />
+
+      <LoadingDialog message={redirecting || ""} isOpen={!!redirecting} />
     </div>
   );
 };
