@@ -15,7 +15,7 @@ import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
-import { getAdjustedFileTrees } from "@/constants/fileTree";
+import { getAdjustedFileTrees, Window } from "@/constants/fileTree";
 
 const FileExplorerScreen = () => {
   const [windows, setWindows] = useState<Window[]>([]);
@@ -43,13 +43,14 @@ const FileExplorerScreen = () => {
     if (file.type === "github") {
       window.open("https://github.com/zzkhong", "_blank");
     } else {
-      const existingWindow = windows.find(
-        (window) => window.id === `window-${id}`
-      );
+      const windowId = `window-${id}`;
+      const existingWindow = windows.find((window) => window.id === windowId);
 
-      if (!existingWindow) {
-        const newWindow = {
-          id: `window-${id}`,
+      if (existingWindow) {
+        setFocusWindow(windowId);
+      } else {
+        const newWindow: Window = {
+          id: windowId,
           title: file.name,
           position: file.position,
         };
