@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { JSX } from "react";
 import { useState } from "react";
 import {
   closestCorners,
@@ -16,9 +16,17 @@ import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
 import { getAdjustedFileTrees, Window } from "@/constants/fileTree";
-import ContentTerminal from "@/components/window/ContentTerminal";
-import ContentView from "@/components/window/ContentView";
-import ContentDir from "@/components/window/ContentDir";
+import ContentCareer from "@/components/window/ContentCareer";
+import ContentContact from "@/components/window/ContentContact";
+import ContentReadMe from "@/components/window/ContentReadMe";
+import ContentTerminal from "@/components/window/ContentCopyright";
+
+const windowContent: Record<string, JSX.Element> = {
+  career: <ContentCareer />,
+  contact: <ContentContact />,
+  readme: <ContentReadMe />,
+  terminal: <ContentTerminal />,
+};
 
 const FileExplorerScreen = () => {
   const [windows, setWindows] = useState<Window[]>([]);
@@ -54,6 +62,7 @@ const FileExplorerScreen = () => {
       } else {
         const newWindow: Window = {
           id: windowId,
+          fileId: id,
           title: file.name,
           position: file.position,
         };
@@ -145,9 +154,7 @@ const FileExplorerScreen = () => {
                 y: window.position?.y || 0,
               }}
             >
-              <ContentTerminal />
-              <ContentView />
-              <ContentDir />
+              {windowContent[window.fileId]}
             </WindowBox>
           ))}
         </>

@@ -9,6 +9,7 @@ interface FileTree {
 
 export interface Window {
   id: string;
+  fileId: string;
   title: string;
   position?: {
     x: number;
@@ -33,8 +34,8 @@ const files: Record<string, FileTree> = {
     name: "Read ME",
     type: "file",
   },
-  copyright: {
-    name: "Copyright",
+  terminal: {
+    name: "Terminal",
     type: "exe",
   },
 };
