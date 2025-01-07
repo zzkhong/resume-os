@@ -15,7 +15,7 @@ interface DesktopFileProp {
   position: { x: number; y: number };
 }
 
-const iconMapper = {
+const iconMapper: any = {
   folder: FolderIcon,
   file: FileIcon,
   exe: TerminalIcon,
@@ -53,7 +53,7 @@ const DesktopFile: React.FC<DesktopFileProp> = ({
   return (
     <div
       ref={setNodeRef}
-      className="flex flex-col items-center cursor-pointer hover:text-green-300 text-green-400"
+      className="flex flex-col z-10 items-center cursor-pointer hover:text-green-300 text-green-400"
       onClick={() => {
         if (!isDragging) onClick && onClick(id);
       }}

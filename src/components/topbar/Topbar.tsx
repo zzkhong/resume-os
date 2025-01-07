@@ -35,7 +35,7 @@ const TopBar = () => {
         onConfirm={handleRestart}
         onCancel={() => setIsModalOpen(false)}
       />
-      <div className="w-full h-10 bg-gray-900 text-green-400 flex items-center justify-between px-4 rounded-t-lg shadow-lg">
+      <div className="w-full h-10 bg-gray-900 text-green-400 flex items-center justify-between px-4 shadow-lg">
         {/* Left Section */}
         <div className="flex items-center space-x-2">
           <button

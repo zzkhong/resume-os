@@ -16,11 +16,61 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: linear-gradient(to top, var(--background) 25%, #333333 25%);
+  background-size: 100% 2px;
+
   font-family: "Roboto Mono", "Courier New", monospace;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
+
+  box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);
+
+  z-index: 0;
+}
+
+body:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  animation: flicker 0.1s infinite;
+}
+
+body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 50%,
+    transparent 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Animation for flicker effect */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 * {
   user-select: none;
   cursor: url("/cursor.svg") 16 16, auto;
+}
+
+footer {
+  text-shadow: none;
 }
