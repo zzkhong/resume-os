@@ -22,4 +22,5 @@ body {
 
 * {
   user-select: none;
+  cursor: url("/cursor.svg") 16 16, auto;
 }
