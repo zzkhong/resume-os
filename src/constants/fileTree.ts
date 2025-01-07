@@ -50,7 +50,3 @@ export const getAdjustedFileTrees = () => {
 
   return files;
 };
-
-// export const windowTree = fileTree.map((file) => (
-
-// ))

@@ -16,6 +16,9 @@ import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
 import { getAdjustedFileTrees, Window } from "@/constants/fileTree";
+import ContentTerminal from "@/components/window/ContentTerminal";
+import ContentView from "@/components/window/ContentView";
+import ContentDir from "@/components/window/ContentDir";
 
 const FileExplorerScreen = () => {
   const [windows, setWindows] = useState<Window[]>([]);
@@ -84,8 +87,8 @@ const FileExplorerScreen = () => {
           ? {
               ...window,
               position: {
-                x: window.position.x + delta.x,
-                y: window.position.y + delta.y,
+                x: (window.position?.x || 0) + delta.x,
+                y: (window.position?.y || 0) + delta.y,
               },
             }
           : window
@@ -113,7 +116,7 @@ const FileExplorerScreen = () => {
         collisionDetection={closestCorners}
       >
         <div className="flex-grow overflow-hidden relative">
-          {Object.keys(files).map((id, i) => (
+          {Object.keys(files).map((id) => (
             <DesktopFile
               key={id}
               id={id}
@@ -138,11 +141,13 @@ const FileExplorerScreen = () => {
                 setWindows(windows.filter((w) => w.id !== window.id))
               }
               position={{
-                x: window.position.x,
-                y: window.position.y,
+                x: window.position?.x || 0,
+                y: window.position?.y || 0,
               }}
             >
-              <div className="flex-grow grid grid-cols-4 gap-4 p-4 text-green-400" />
+              <ContentTerminal />
+              <ContentView />
+              <ContentDir />
             </WindowBox>
           ))}
         </>
