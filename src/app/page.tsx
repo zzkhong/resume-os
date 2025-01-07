@@ -32,7 +32,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-screen relative overflow-hidden">
       {bootComplete || !isBootScreenVisible ? (
         <FileExplorerScreen />
       ) : (

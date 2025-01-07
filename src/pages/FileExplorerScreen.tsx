@@ -14,11 +14,13 @@ import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
-import { fileTree } from "@/constants/fileTree";
+import { getAdjustedFileTrees } from "@/constants/fileTree";
 
 const FileExplorerScreen = () => {
-  const [isExplorerOpen, setExplorerOpen] = useState(false);
-  const [files, setFiles] = useState(fileTree);
+  const [windows, setWindows] = useState<any[]>([]);
+  const [focusWindow, setFocusWindow] = useState("");
+
+  const [files, setFiles] = useState(getAdjustedFileTrees());
 
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
@@ -35,17 +37,34 @@ const FileExplorerScreen = () => {
   const sensors = useSensors(mouseSensor, touchSensor);
 
   const handleClick = (id: string) => {
-    console.log("Clicked file with ID:", id);
-    if (id === "careers") {
-      setExplorerOpen(true);
+    const file = files[id];
+
+    if (file.type === "github") {
+      window.open("https://github.com/zzkhong", "_blank");
+    } else {
+      const existingWindow = windows.find(
+        (window) => window.id === `window-${id}`
+      );
+
+      if (!existingWindow) {
+        const newWindow = {
+          id: `window-${id}`,
+          title: file.name,
+          position: file.position,
+        };
+
+        setWindows([...windows, newWindow]);
+      }
     }
+    console.log(windows);
   };
 
   const handleDragEnd = (event: any) => {
     const { active, delta } = event;
     const { id } = active;
 
-    if (files[id]) {
+    // Files position update
+    if (files[id] && files[id].position) {
       const updatedFiles = { ...files };
       updatedFiles[id] = {
         ...files[id],
@@ -56,19 +75,39 @@ const FileExplorerScreen = () => {
       };
       setFiles(updatedFiles);
     }
+
+    // Windows position update
+    if (windows.some((window) => window.id === id)) {
+      const updatedWindows = windows.map((window) =>
+        window.id === id
+          ? {
+              ...window,
+              position: {
+                x: window.position.x + delta.x,
+                y: window.position.y + delta.y,
+              },
+            }
+          : window
+      );
+      setWindows(updatedWindows);
+    }
+  };
+
+  const handleWindowFocus = (id: string) => {
+    setFocusWindow(id);
   };
 
   return (
-    <div className="flex flex-col w-full h-full ">
-      <TopBar onReset={() => setFiles(fileTree)} />
+    <div className="flex flex-col w-full h-full">
+      <TopBar onReset={() => setFiles(getAdjustedFileTrees())} />
 
-      <div className="flex-grow overflow-hidden relative">
-        <DndContext
-          sensors={sensors}
-          onDragEnd={handleDragEnd}
-          collisionDetection={closestCorners}
-        >
-          {Object.keys(files).map((id) => (
+      <DndContext
+        sensors={sensors}
+        onDragEnd={handleDragEnd}
+        collisionDetection={closestCorners}
+      >
+        <div className="flex-grow overflow-hidden relative">
+          {Object.keys(files).map((id, i) => (
             <DesktopFile
               key={id}
               id={id}
@@ -78,15 +117,30 @@ const FileExplorerScreen = () => {
               position={files[id].position}
             />
           ))}
-        </DndContext>
-      </div>
+        </div>
 
-      {/* File Explorer Window */}
-      {isExplorerOpen && (
-        <WindowBox title="File Explorer" onClose={() => setExplorerOpen(false)}>
-          <div className="flex-grow grid grid-cols-4 gap-4 p-4 text-green-400" />
-        </WindowBox>
-      )}
+        <>
+          {windows.map((window) => (
+            <WindowBox
+              key={window.id}
+              id={window.id}
+              title={window.title}
+              className="w-[600px] h-[400px]"
+              isFocused={window.id === focusWindow}
+              onClick={() => handleWindowFocus(window.id)}
+              onClose={() =>
+                setWindows(windows.filter((w) => w.id !== window.id))
+              }
+              position={{
+                x: window.position.x,
+                y: window.position.y,
+              }}
+            >
+              <div className="flex-grow grid grid-cols-4 gap-4 p-4 text-green-400" />
+            </WindowBox>
+          ))}
+        </>
+      </DndContext>
 
       <CopyrightFooter />
     </div>

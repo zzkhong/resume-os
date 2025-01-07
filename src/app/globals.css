@@ -19,7 +19,7 @@ body {
   background: linear-gradient(to top, var(--background) 25%, #333333 25%);
   background-size: 100% 2px;
   font-family: "Roboto Mono", "Courier New", monospace;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
+  text-shadow: 0 0 3 #00ff00, 0 0 10px #00ff00;
   box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);
   z-index: 0;
 }
@@ -59,7 +59,7 @@ body:before {
     opacity: 1;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.25;
   }
 }
 

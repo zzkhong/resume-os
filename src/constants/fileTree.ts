@@ -1,55 +1,47 @@
 interface FileTree {
   name: string;
-  type: "folder" | "file" | "exe" | "github" | "linkedin" | "pdf";
-  position: {
+  type: "folder" | "file" | "exe" | "github" | "linkedin" | "pdf" | "internet";
+  position?: {
     x: number;
     y: number;
   };
 }
 
-export const fileTree: Record<string, FileTree> = {
-  careers: {
+const files: Record<string, FileTree> = {
+  career: {
     name: "Career",
-    type: "file",
-    position: {
-      x: 20,
-      y: 20,
-    },
+    type: "internet",
   },
-  portfolios: {
-    name: "Portfolio",
-    type: "folder",
-    position: {
-      x: 20,
-      y: 100,
-    },
+  portfolio: {
+    name: "Project",
+    type: "github",
   },
-  contacts: {
+  contact: {
     name: "Contact",
     type: "folder",
-    position: {
-      x: 20,
-      y: 180,
-    },
   },
   readme: {
     name: "Read ME",
     type: "file",
-    position: {
-      x: 20,
-      y: 260,
-    },
   },
   copyright: {
     name: "Copyright",
     type: "exe",
-    position: {
-      x: 20,
-      y: 340,
-    },
   },
 };
 
-export const portfolioDir = {};
+export const getAdjustedFileTrees = () => {
+  Object.keys(files).every(
+    (id, i) =>
+      (files[id].position = {
+        x: 20,
+        y: 20 + i * 80,
+      })
+  );
 
-export const contactDir = {};
+  return files;
+};
+
+// export const windowTree = fileTree.map((file) => (
+
+// ))
