@@ -18,12 +18,9 @@ body {
   color: var(--foreground);
   background: linear-gradient(to top, var(--background) 25%, #333333 25%);
   background-size: 100% 2px;
-
   font-family: "Roboto Mono", "Courier New", monospace;
   text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-
   box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);
-
   z-index: 0;
 }
 
@@ -66,11 +63,17 @@ body:before {
   }
 }
 
-* {
-  user-select: none;
-  cursor: url("/cursor.svg") 16 16, auto;
-}
-
 footer {
   text-shadow: none;
+}
+
+* {
+  user-select: none;
+  cursor: url("/cursor.svg") 4 4, auto;
+}
+
+button,
+a,
+input {
+  cursor: inherit;
 }

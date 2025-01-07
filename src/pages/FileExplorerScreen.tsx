@@ -2,7 +2,14 @@
 
 import React from "react";
 import { useState } from "react";
-import { DndContext } from "@dnd-kit/core";
+import {
+  closestCorners,
+  DndContext,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
@@ -13,9 +20,23 @@ const FileExplorerScreen = () => {
   const [isExplorerOpen, setExplorerOpen] = useState(false);
   const [files, setFiles] = useState(fileTree);
 
-  const handleFileClick = (id: string) => {
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 10,
+    },
+  });
+
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      distance: 10,
+    },
+  });
+
+  const sensors = useSensors(mouseSensor, touchSensor);
+
+  const handleClick = (id: string) => {
     console.log("Clicked file with ID:", id);
-    if (id === "explorer") {
+    if (id === "careers") {
       setExplorerOpen(true);
     }
   };
@@ -42,14 +63,18 @@ const FileExplorerScreen = () => {
       <TopBar />
 
       <div className="flex-grow overflow-hidden relative">
-        <DndContext onDragEnd={handleDragEnd}>
+        <DndContext
+          sensors={sensors}
+          onDragEnd={handleDragEnd}
+          collisionDetection={closestCorners}
+        >
           {Object.keys(files).map((id) => (
             <DesktopFile
               key={id}
               id={id}
               name={files[id].name}
               type={files[id].type}
-              onClick={handleFileClick}
+              onClick={handleClick}
               position={files[id].position}
             />
           ))}

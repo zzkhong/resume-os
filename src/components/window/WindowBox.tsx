@@ -15,11 +15,11 @@ const WindowBox = ({ title, onClose, children }: WindowBoxProps) => {
   return (
     <div
       ref={setNodeRef}
-      className="absolute top-20 left-20 w-[600px] h-[400px] bg-gray-900 border border-green-400 shadow-lg flex flex-col"
+      className="absolute z-20 top-20 left-20 w-[600px] h-[400px] bg-gray-900 border border-green-400 shadow-lg flex flex-col"
     >
       <div className="flex justify-between items-center bg-gray-800 px-4 py-2 border-b border-green-400">
         <span className="text-green-400">{title}</span>
-        <button onClick={onClose} className="text-green-400">
+        <button onClick={onClose} className="text-green-400 hover:opacity-50">
           ✕
         </button>
       </div>

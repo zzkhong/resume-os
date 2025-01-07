@@ -35,12 +35,12 @@ const TopBar = () => {
         onConfirm={handleRestart}
         onCancel={() => setIsModalOpen(false)}
       />
-      <div className="w-full h-10 bg-gray-900 text-green-400 flex items-center justify-between px-4 shadow-lg">
+      <div className="w-full z-10 h-10 bg-gray-900 text-green-400 flex items-center justify-between px-4 shadow-lg">
         {/* Left Section */}
         <div className="flex items-center space-x-2">
           <button
             onClick={handlePowerClick}
-            className="p-2 rounded-full hover:bg-gray-700 transition"
+            className="p-1 rounded-full hover:bg-gray-700 transition"
             aria-label="Power Menu"
           >
             <FiPower className="text-green-400 w-5 h-5" />
@@ -48,7 +48,7 @@ const TopBar = () => {
         </div>
 
         {/* Center Section */}
-        <div className="text-center font-mono text-sm">Resume OS v1.8</div>
+        <div className="text-center font-mono text-sm">Resume v6.1</div>
 
         {/* Right Section */}
         <div className="text-sm font-mono">{dateTime}</div>

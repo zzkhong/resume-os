@@ -1,6 +1,6 @@
 export const fileTree: Record<string, FileTree> = {
   careers: {
-    name: "Careers",
+    name: "Career",
     type: "folder",
     position: {
       x: 20,
@@ -8,7 +8,7 @@ export const fileTree: Record<string, FileTree> = {
     },
   },
   portfolios: {
-    name: "Portfolios",
+    name: "Portfolio",
     type: "folder",
     position: {
       x: 20,
@@ -16,7 +16,7 @@ export const fileTree: Record<string, FileTree> = {
     },
   },
   contacts: {
-    name: "Contacts",
+    name: "Contact",
     type: "folder",
     position: {
       x: 20,

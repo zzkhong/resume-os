@@ -10,7 +10,7 @@ import PDFIcon from "../icon/PDFIcon";
 interface DesktopFileProp {
   id: string;
   name: string;
-  type: "folder" | "file" | "app";
+  type: string;
   onClick?: (id: string) => void;
   position: { x: number; y: number };
 }
@@ -47,13 +47,13 @@ const DesktopFile: React.FC<DesktopFileProp> = ({
           top: `${position.y}px`,
         }),
     cursor: isDragging ? "move" : "pointer",
-    opacity: isDragging ? 0.5 : 1,
   };
 
   return (
     <div
       ref={setNodeRef}
-      className="flex flex-col z-10 items-center cursor-pointer hover:text-green-300 text-green-400"
+      className="flex flex-col z-10 items-center 
+      active:opacity-50 hover:scale-90 text-green-400"
       onClick={() => {
         if (!isDragging) onClick && onClick(id);
       }}
