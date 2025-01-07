@@ -8,15 +8,15 @@ interface TopBarProp {
   onReset: () => void;
 }
 
+const DATE_FORMAT = "MMM D, YYYY h:mm A";
+
 const TopBar: React.FC<TopBarProp> = ({ onReset }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [dateTime, setDateTime] = React.useState(
-    dayjs().format("DD-MMM-YY HH:mm")
-  );
+  const [dateTime, setDateTime] = React.useState(dayjs().format(DATE_FORMAT));
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setDateTime(dayjs().format("DD-MMM-YY HH:mm"));
+      setDateTime(dayjs().format(DATE_FORMAT));
     }, 60000);
 
     return () => clearInterval(interval);
@@ -58,9 +58,6 @@ const TopBar: React.FC<TopBarProp> = ({ onReset }) => {
             <GrPowerReset className="text-green-400 w-5 h-5" />
           </button>
         </div>
-
-        {/* Center Section */}
-        <div className="text-center font-mono text-sm">Resume v6.1</div>
 
         {/* Right Section */}
         <div className="text-sm font-mono">{dateTime}</div>

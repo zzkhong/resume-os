@@ -5,6 +5,7 @@ import { useState } from "react";
 import {
   closestCorners,
   DndContext,
+  DragEndEvent,
   MouseSensor,
   TouchSensor,
   useSensor,
@@ -17,7 +18,7 @@ import DesktopFile from "@/components/file/DesktopFile";
 import { getAdjustedFileTrees } from "@/constants/fileTree";
 
 const FileExplorerScreen = () => {
-  const [windows, setWindows] = useState<any[]>([]);
+  const [windows, setWindows] = useState<Window[]>([]);
   const [focusWindow, setFocusWindow] = useState("");
 
   const [files, setFiles] = useState(getAdjustedFileTrees());
@@ -56,10 +57,9 @@ const FileExplorerScreen = () => {
         setWindows([...windows, newWindow]);
       }
     }
-    console.log(windows);
   };
 
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, delta } = event;
     const { id } = active;
 
@@ -97,9 +97,14 @@ const FileExplorerScreen = () => {
     setFocusWindow(id);
   };
 
+  const handleReset = () => {
+    setFiles(getAdjustedFileTrees());
+    setWindows([]);
+  };
+
   return (
     <div className="flex flex-col w-full h-full">
-      <TopBar onReset={() => setFiles(getAdjustedFileTrees())} />
+      <TopBar onReset={handleReset} />
 
       <DndContext
         sensors={sensors}

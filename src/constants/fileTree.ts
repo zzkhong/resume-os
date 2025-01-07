@@ -7,6 +7,15 @@ interface FileTree {
   };
 }
 
+export interface Window {
+  id: string;
+  title: string;
+  position?: {
+    x: number;
+    y: number;
+  };
+}
+
 const files: Record<string, FileTree> = {
   career: {
     name: "Career",
