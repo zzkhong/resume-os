@@ -1,85 +1,65 @@
+"use client";
+
 import React from "react";
 import { useState } from "react";
-import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
+import { DndContext } from "@dnd-kit/core";
 import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
-import FolderIcon from "@/components/icon/FolderIcon";
-import FileIcon from "@/components/icon/FileIcon";
 import CopyrightFooter from "@/components/footer/Footer";
-
-const DesktopIcon = ({
-  id,
-  name,
-  type,
-  onClick,
-}: {
-  id: string;
-  name: string;
-  type: "folder" | "file";
-  onClick: (id: string) => void;
-}) => {
-  const IconComponent = type === "folder" ? FolderIcon : FileIcon;
-  return (
-    <div
-      className="flex flex-col items-center cursor-pointer hover:text-green-300 text-green-400"
-      onClick={() => onClick(id)}
-    >
-      <IconComponent title={name} />
-    </div>
-  );
-};
+import DesktopFile from "@/components/file/DesktopFile";
+import { fileTree } from "@/constants/fileTree";
 
 const FileExplorerScreen = () => {
   const [isExplorerOpen, setExplorerOpen] = useState(false);
+  const [files, setFiles] = useState(fileTree);
 
-  const handleClick = (id: string) => {
+  const handleFileClick = (id: string) => {
+    console.log("Clicked file with ID:", id);
     if (id === "explorer") {
       setExplorerOpen(true);
     }
   };
 
+  const handleDragEnd = (event: any) => {
+    const { active, delta } = event;
+    const { id } = active;
+
+    if (files[id]) {
+      const updatedFiles = { ...files };
+      updatedFiles[id] = {
+        ...files[id],
+        position: {
+          x: files[id].position.x + delta.x,
+          y: files[id].position.y + delta.y,
+        },
+      };
+      setFiles(updatedFiles);
+    }
+  };
+
   return (
-    <div className="relative w-full h-screen bg-black text-green-400 font-mono">
+    <div className="flex flex-col w-full h-full ">
       <TopBar />
 
-      <div className="grid grid-cols-6 gap-4 p-6">
-        <DesktopIcon
-          id="explorer"
-          name="File Explorer"
-          type="folder"
-          onClick={handleClick}
-        />
-        <DesktopIcon
-          id="resume"
-          name="Resume.txt"
-          type="file"
-          onClick={() => {}}
-        />
+      <div className="flex-grow overflow-hidden relative">
+        <DndContext onDragEnd={handleDragEnd}>
+          {Object.keys(files).map((id) => (
+            <DesktopFile
+              key={id}
+              id={id}
+              name={files[id].name}
+              type={files[id].type}
+              onClick={handleFileClick}
+              position={files[id].position}
+            />
+          ))}
+        </DndContext>
       </div>
 
       {/* File Explorer Window */}
       {isExplorerOpen && (
         <WindowBox title="File Explorer" onClose={() => setExplorerOpen(false)}>
-          <div className="flex-grow grid grid-cols-4 gap-4 p-4 text-green-400">
-            <DesktopIcon
-              id="file1"
-              name="Resume.txt"
-              type="file"
-              onClick={() => {}}
-            />
-            <DesktopIcon
-              id="folder1"
-              name="Projects"
-              type="folder"
-              onClick={() => {}}
-            />
-            <DesktopIcon
-              id="file2"
-              name="Skills.pdf"
-              type="file"
-              onClick={() => {}}
-            />
-          </div>
+          <div className="flex-grow grid grid-cols-4 gap-4 p-4 text-green-400" />
         </WindowBox>
       )}
 

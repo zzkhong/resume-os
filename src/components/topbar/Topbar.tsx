@@ -48,7 +48,7 @@ const TopBar = () => {
         </div>
 
         {/* Center Section */}
-        <div className="text-center font-mono text-sm">Resume OS v1.0</div>
+        <div className="text-center font-mono text-sm">Resume OS v1.8</div>
 
         {/* Right Section */}
         <div className="text-sm font-mono">{dateTime}</div>
