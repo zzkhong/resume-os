@@ -1,5 +1,6 @@
 "use client";
 
+import { getAdjustedFileTrees } from "@/constants/fileTree";
 import React, { useState, useEffect, useRef } from "react";
 
 const ContentTerminal: React.FC = () => {
@@ -23,6 +24,11 @@ const ContentTerminal: React.FC = () => {
     if (e.key === "Enter") {
       if (input.trim().toLowerCase() === "clear") {
         setOutput([]); // Reset the terminal output when "clear" is typed
+      } else if (input.trim().toLowerCase() === "ls") {
+        setOutput((prevOutput) => [
+          ...prevOutput,
+          ...Object.values(getAdjustedFileTrees()).map((file) => file.name),
+        ]);
       } else {
         setOutput((prevOutput) => [
           ...prevOutput,
