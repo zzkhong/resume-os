@@ -33,7 +33,7 @@ body {
   color: var(--foreground);
   background: linear-gradient(to top, var(--background) 25%, #333333 25%);
   background-size: 100% 2px;
-  font-family: "Roboto Mono", "Courier New", monospace;
+  font-family: monospace;
   text-shadow: 0 0 3 #00ff00, 0 0 10px #00ff00;
   box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);
   z-index: 0;
@@ -124,4 +124,17 @@ body:before {
   src: url("/fonts/Silkscreen-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+.about-me-container {
+  font-family: "Courier New", monospace; /* You can set a specific font if you want */
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.about-me-container h1,
+.about-me-container p,
+.about-me-container ul {
+  text-shadow: none;
+  box-shadow: none;
 }

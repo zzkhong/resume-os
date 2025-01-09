@@ -20,7 +20,7 @@ import {
   Window,
   getWindowStyle,
 } from "@/constants/fileTree";
-import ContentCareer from "@/components/window/ContentCareer";
+import ContentMe from "@/components/window/ContentMe";
 import ContentResource from "@/components/window/ContentResource";
 import ContentTerminal from "@/components/window/ContentTerminal";
 import LoadingDialog from "@/components/dialog/LoadingDialog";
@@ -125,7 +125,7 @@ const FileExplorerScreen = () => {
   };
 
   const windowContent: Record<string, JSX.Element> = {
-    career: <ContentCareer />,
+    career: <ContentMe />,
     resource: <ContentResource onRedirect={handleRedirect} />,
     snake: <ContentSnake />,
     terminal: <ContentTerminal />,

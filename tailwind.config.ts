@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ["Roboto Mono", "Courier New", "monospace"],
+        mono: ["monospace"],
         silk: ["Silkscreen", "monospace"],
       },
       colors: {
