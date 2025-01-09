@@ -153,7 +153,7 @@ const SnakeGame: React.FC = () => {
           <h2 className="text-green-400 text-2xl mb-4 font-silk">Game Over</h2>
           <button
             onClick={restartGame}
-            className="bg-green-400 text-black py-2 px-4 text-lg hover:bg-green-700 font-silk"
+            className="bg-green-700 text-black py-2 px-4 text-lg hover:bg-green-400 font-silk"
           >
             Restart
           </button>
