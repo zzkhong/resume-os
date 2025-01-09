@@ -25,7 +25,8 @@ const ContentMe = () => {
           <a
             href="/file/resume.pdf"
             download
-            className="bg-blue-500 text-white py-1 px-3 rounded-lg text-sm font-bold font-silk hover:opacity-80"
+            className="bg-blue-500 text-white py-1 px-3 rounded-lg text-sm 
+            font-bold font-silk hover:opacity-80 invisible sm:visible"
           >
             Download Resume
           </a>
@@ -35,7 +36,7 @@ const ContentMe = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-md font-bold font-silk text-gray-500 ${
+              className={`text-sm sm:text-base font-bold font-silk text-gray-500 min-w-20 ${
                 activeTab === tab.id
                   ? "underline text-gray-900"
                   : "no-underline"
