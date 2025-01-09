@@ -65,7 +65,7 @@ const WindowBox = ({
         </button>
       </div>
 
-      <div className="flex-grow overflow-auto p-4">{children}</div>
+      <div className="flex-grow overflow-auto">{children}</div>
     </div>
   );
 };

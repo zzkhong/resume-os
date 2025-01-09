@@ -95,3 +95,26 @@ body:before {
     transform: rotate(360deg);
   }
 }
+
+/* Customize the scrollbar */
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Dark background for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #16a34a; /* Solid green for the thumb */
+  border-radius: 2px; /* Slightly rounded edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e; /* Lighter green on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #15803d; /* Darker green when active */
+}

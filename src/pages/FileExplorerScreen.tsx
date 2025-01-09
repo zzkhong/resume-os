@@ -17,17 +17,9 @@ import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
 import { getAdjustedFileTrees, Window } from "@/constants/fileTree";
 import ContentCareer from "@/components/window/ContentCareer";
-import ContentContact from "@/components/window/ContentContact";
-import ContentReadMe from "@/components/window/ContentReadMe";
-import ContentTerminal from "@/components/window/ContentCopyright";
+import ContentResource from "@/components/window/ContentResource";
+import ContentTerminal from "@/components/window/ContentTerminal";
 import LoadingDialog from "@/components/dialog/LoadingDialog";
-
-const windowContent: Record<string, JSX.Element> = {
-  career: <ContentCareer />,
-  contact: <ContentContact />,
-  readme: <ContentReadMe />,
-  terminal: <ContentTerminal />,
-};
 
 const FileExplorerScreen = () => {
   const [windows, setWindows] = useState<Window[]>([]);
@@ -50,16 +42,20 @@ const FileExplorerScreen = () => {
 
   const sensors = useSensors(mouseSensor, touchSensor);
 
+  const handleRedirect = (msg: string, url: string) => {
+    // Fake Redirecting
+    setRedirecting(msg);
+    setTimeout(() => {
+      window.open(url, "_blank");
+      setRedirecting("");
+    }, 1000);
+  };
+
   const handleClick = (id: string) => {
     const file = files[id];
 
     if (file.type === "github") {
-      // Fake Redirecting
-      setRedirecting("Opening GitHub...");
-      setTimeout(() => {
-        window.open("https://github.com/zzkhong", "_blank");
-        setRedirecting("");
-      }, 1500);
+      handleRedirect("Opening GitHub...", "https://github.com/zzkhong");
     } else {
       const windowId = `window-${id}`;
       const existingWindow = windows.find((window) => window.id === windowId);
@@ -120,6 +116,12 @@ const FileExplorerScreen = () => {
   const handleReset = () => {
     setFiles(getAdjustedFileTrees());
     setWindows([]);
+  };
+
+  const windowContent: Record<string, JSX.Element> = {
+    career: <ContentCareer />,
+    resource: <ContentResource onRedirect={handleRedirect} />,
+    terminal: <ContentTerminal />,
   };
 
   return (

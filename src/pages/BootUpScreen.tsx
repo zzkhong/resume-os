@@ -17,7 +17,7 @@ const messages = [
     time: 1200,
   },
   {
-    msg: "Booting CK Chin Resume...",
+    msg: "Booting CK Resume...",
     percent: 69,
     time: 1800,
   },

@@ -18,25 +18,21 @@ export interface Window {
 }
 
 const files: Record<string, FileTree> = {
-  career: {
-    name: "Career",
-    type: "internet",
+  terminal: {
+    name: "Terminal",
+    type: "exe",
+  },
+  resource: {
+    name: "Resource",
+    type: "folder",
   },
   portfolio: {
     name: "Project",
     type: "github",
   },
-  contact: {
-    name: "Contact",
-    type: "folder",
-  },
-  readme: {
-    name: "Read ME",
-    type: "file",
-  },
-  terminal: {
-    name: "Terminal",
-    type: "exe",
+  career: {
+    name: "About Me",
+    type: "internet",
   },
 };
 

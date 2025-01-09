@@ -40,6 +40,7 @@ const DesktopFile: React.FC<DesktopFileProp> = ({
       className="flex flex-col z-10 items-center 
       active:opacity-50 hover:scale-90 text-green-400"
       onClick={() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         if (!isDragging) onClick && onClick(id);
       }}
       style={{
