@@ -59,15 +59,13 @@ const FileExplorerScreen = () => {
   const handleClick = (id: string) => {
     const file = files[id];
 
-    if (file.type === "github") {
-      handleRedirect("Opening GitHub...", "https://github.com/zzkhong");
+    if (file.link) {
+      handleRedirect(file.link.message, file.link.url);
     } else {
       const windowId = `window-${id}`;
       const existingWindow = windows.find((window) => window.id === windowId);
 
-      if (existingWindow) {
-        setFocusWindow(windowId);
-      } else {
+      if (!existingWindow) {
         const newWindow: Window = {
           id: windowId,
           fileId: id,
@@ -78,6 +76,7 @@ const FileExplorerScreen = () => {
 
         setWindows([...windows, newWindow]);
       }
+      setFocusWindow(windowId);
     }
   };
 

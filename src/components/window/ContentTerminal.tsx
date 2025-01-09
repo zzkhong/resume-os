@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Terminal } from "xterm";
+import { FitAddon } from "xterm-addon-fit";
 import "xterm/css/xterm.css";
 
 const ContentTerminal: React.FC = () => {
@@ -10,8 +11,8 @@ const ContentTerminal: React.FC = () => {
   React.useEffect(() => {
     if (terminalRef.current) {
       const term = new Terminal({
-        cols: 80,
-        rows: 24,
+        cols: 20,
+        rows: 20,
         cursorBlink: true,
         theme: {
           background: "black",
@@ -19,7 +20,11 @@ const ContentTerminal: React.FC = () => {
         },
       });
 
+      const fitAddon = new FitAddon();
+      term.loadAddon(fitAddon); // Attach the fit addon
       term.open(terminalRef.current);
+
+      fitAddon.fit();
 
       term.writeln("© CK Chin. All Rights Reserved.");
       displayPrompt(term);
@@ -43,17 +48,7 @@ const ContentTerminal: React.FC = () => {
     term.write("user@ubuntu:~$ ");
   };
 
-  return (
-    <div
-      ref={terminalRef}
-      style={{
-        height: "400px",
-        width: "600px",
-        border: "1px solid #ccc",
-        margin: "0 auto",
-      }}
-    />
-  );
+  return <div ref={terminalRef} className="w-full h-full" />;
 };
 
 export default ContentTerminal;

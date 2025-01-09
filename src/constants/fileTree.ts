@@ -13,6 +13,10 @@ interface FileTree {
     x: number;
     y: number;
   };
+  link?: {
+    message: string;
+    url: string;
+  };
 }
 
 export interface Window {
@@ -42,6 +46,10 @@ const files: Record<string, FileTree> = {
   portfolio: {
     name: "Project",
     type: "github",
+    link: {
+      message: "Opening GitHub...",
+      url: "https://github.com/zzkhong",
+    },
   },
   career: {
     name: "About Me",
