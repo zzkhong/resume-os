@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useTypingEffect = (
-  text: string,
-  typingSpeed: number = 20,
-  repeat: boolean = false
-) => {
+const useTypingEffect = (text: string, typingSpeed: number = 20) => {
   const [typedText, setTypedText] = useState<string>("");
 
   useEffect(() => {

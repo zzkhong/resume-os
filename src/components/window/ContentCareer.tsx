@@ -3,7 +3,7 @@
 import React from "react";
 
 const ContentCareer: React.FC = () => {
-  const jobs: Job[] = [
+  const jobs = [
     {
       title: "Software Engineer",
       description:
@@ -53,11 +53,11 @@ const ContentCareer: React.FC = () => {
               <p className="mt-2 text-lg">{job.description}</p>
             </div>
             <div className="flex-1 ml-6">
-              <img
+              {/* <img
                 src={job.image}
                 alt={job.title}
                 className="w-full h-auto rounded-lg shadow-lg"
-              />
+              /> */}
             </div>
           </div>
         ))}

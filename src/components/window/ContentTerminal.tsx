@@ -1,54 +1,90 @@
 "use client";
 
-import React from "react";
-import { Terminal } from "xterm";
-import { FitAddon } from "xterm-addon-fit";
-import "xterm/css/xterm.css";
+import React, { useState, useEffect, useRef } from "react";
 
 const ContentTerminal: React.FC = () => {
-  const terminalRef = React.useRef<HTMLDivElement>(null);
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState<string[]>([]);
 
-  React.useEffect(() => {
-    if (terminalRef.current) {
-      const term = new Terminal({
-        cols: 20,
-        rows: 20,
-        cursorBlink: true,
-        theme: {
-          background: "black",
-          foreground: "white",
-        },
-      });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
 
-      const fitAddon = new FitAddon();
-      term.loadAddon(fitAddon); // Attach the fit addon
-      term.open(terminalRef.current);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
 
-      fitAddon.fit();
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
-      term.writeln("© CK Chin. All Rights Reserved.");
-      displayPrompt(term);
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (input.trim().toLowerCase() === "clear") {
+        setOutput([]); // Reset the terminal output when "clear" is typed
+      } else {
+        setOutput((prevOutput) => [
+          ...prevOutput,
+          `user@ubuntu:~$ ${input}`,
+          "Permission denied. Need sudo access.",
+        ]);
+      }
+      setInput("");
+    }
+  };
 
-      term.onData((data) => {
-        // Simulating 'Permission Denied' for every input
-        if (data === "\r") {
-          term.writeln("\r\nPermission denied. Need sudo access.");
-        } else {
-          term.write(data === "\u007f" ? "\b \b" : data);
-        }
-      });
-
-      return () => {
-        term.dispose();
-      };
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   }, []);
 
-  const displayPrompt = (term: Terminal) => {
-    term.write("user@ubuntu:~$ ");
-  };
+  return (
+    <div
+      ref={terminalRef}
+      className="terminal"
+      onClick={handleTerminalClick}
+      style={{
+        fontFamily: "monospace",
+        background: "black",
+        color: "white",
+        padding: "8px",
+        width: "100%",
+        minHeight: "100%",
+      }}
+    >
+      <div style={{ whiteSpace: "pre-wrap" }}>
+        <div>© CK Chin. All Rights Reserved.</div>
 
-  return <div ref={terminalRef} className="w-full h-full" />;
+        {output.map((line, index) => (
+          <div key={index}>{line}</div>
+        ))}
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <span>user@ubuntu:~$ </span>
+        <input
+          ref={inputRef}
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyPress}
+          autoComplete="off"
+          autoFocus
+          style={{
+            background: "transparent",
+            border: "none",
+            color: "white",
+            outline: "none",
+            width: "90%",
+            display: "inline",
+            marginLeft: "5px",
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default ContentTerminal;

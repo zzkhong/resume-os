@@ -7,7 +7,8 @@ import LinkedInIcon from "@/components/icon/LinkedInIcon";
 import PDFIcon from "@/components/icon/PDFIcon";
 import TerminalIcon from "@/components/icon/TerminalIcon";
 
-export const iconMapper: any = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const iconMapper: Record<string, any> = {
   folder: FolderIcon,
   file: FileIcon,
   exe: TerminalIcon,
