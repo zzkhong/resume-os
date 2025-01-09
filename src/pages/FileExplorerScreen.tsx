@@ -112,6 +112,7 @@ const FileExplorerScreen = () => {
           : window
       );
       setWindows(updatedWindows);
+      setFocusWindow(`${id}`);
     }
   };
 

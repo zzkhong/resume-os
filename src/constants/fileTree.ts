@@ -19,7 +19,7 @@ export interface Window {
   id: string;
   fileId: string;
   title: string;
-  style?: string;
+  style?: React.CSSProperties;
   position?: {
     x: number;
     y: number;

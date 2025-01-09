@@ -26,7 +26,8 @@ const WindowBox = ({
   style,
   isFocused,
 }: WindowBoxProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({ id });
 
   const draggableStyle = {
     ...(transform
@@ -45,7 +46,7 @@ const WindowBox = ({
     <div
       onClick={onClick}
       className={`absolute ${
-        isFocused ? "z-30" : "z-20"
+        isFocused || isDragging ? "z-30" : "z-20"
       } bg-gray-900 border border-green-400 shadow-lg flex flex-col ${className}`}
       style={{
         position: "absolute",
