@@ -148,7 +148,7 @@ const FileExplorerScreen = () => {
               name={files[id].name}
               type={files[id].type}
               onClick={handleClick}
-              position={files[id].position}
+              position={files[id].position || { x: 20, y: 20 }}
             />
           ))}
         </div>

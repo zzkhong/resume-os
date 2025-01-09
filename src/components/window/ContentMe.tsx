@@ -2,7 +2,7 @@ import React from "react";
 
 const ContentMe: React.FC = () => {
   return (
-    <div className="about-me-container w-4/5 mx-auto p-5 bg-white border-2 border-gray-800 text-gray-800 bg-gray-200">
+    <div className="about-me-container w-full mx-auto text-gray-800 bg-gray-200">
       <h1 className="text-center underline text-3xl text-gray-700">About Me</h1>
 
       {/* Profile Picture */}
