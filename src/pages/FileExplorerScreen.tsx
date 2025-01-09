@@ -15,11 +15,16 @@ import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
-import { getAdjustedFileTrees, Window } from "@/constants/fileTree";
+import {
+  getAdjustedFileTrees,
+  Window,
+  getWindowStyle,
+} from "@/constants/fileTree";
 import ContentCareer from "@/components/window/ContentCareer";
 import ContentResource from "@/components/window/ContentResource";
 import ContentTerminal from "@/components/window/ContentTerminal";
 import LoadingDialog from "@/components/dialog/LoadingDialog";
+import ContentSnake from "@/components/window/ContentSnake";
 
 const FileExplorerScreen = () => {
   const [windows, setWindows] = useState<Window[]>([]);
@@ -67,6 +72,7 @@ const FileExplorerScreen = () => {
           id: windowId,
           fileId: id,
           title: file.name,
+          style: getWindowStyle(id),
           position: file.position,
         };
 
@@ -121,6 +127,7 @@ const FileExplorerScreen = () => {
   const windowContent: Record<string, JSX.Element> = {
     career: <ContentCareer />,
     resource: <ContentResource onRedirect={handleRedirect} />,
+    snake: <ContentSnake />,
     terminal: <ContentTerminal />,
   };
 
@@ -152,7 +159,7 @@ const FileExplorerScreen = () => {
               key={window.id}
               id={window.id}
               title={window.title}
-              className="w-[600px] h-[400px]"
+              style={window.style}
               isFocused={window.id === focusWindow}
               onClick={() => handleWindowFocus(window.id)}
               onClose={() =>

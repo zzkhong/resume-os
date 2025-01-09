@@ -10,6 +10,7 @@ export default {
     extend: {
       fontFamily: {
         mono: ["Roboto Mono", "Courier New", "monospace"],
+        silk: ["Silkscreen", "monospace"],
       },
       colors: {
         background: "var(--background)",

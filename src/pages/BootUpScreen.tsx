@@ -42,7 +42,7 @@ const BootUpScreen: React.FC<BootUpScreenProps> = ({ onComplete }) => {
 
   React.useEffect(() => {
     if (isFinished) {
-      setLoadingText("Welcome! Press any key to start browsing!");
+      setLoadingText("Welcome! Press any key to start...");
     } else {
       (async () => {
         for (let i = 0; i < messages.length; i++) {
@@ -76,10 +76,10 @@ const BootUpScreen: React.FC<BootUpScreenProps> = ({ onComplete }) => {
   return (
     <div className="w-full h-full bg-black text-green-500 flex justify-center items-center flex-col">
       <div>
-        <h1 className="text-lg text-center">{typedText}</h1>
+        <h1 className="text-lg text-center font-silk">{typedText}</h1>
 
         {!isFinished && (
-          <div className="w-80 h-1 mt-4 bg-gray-700">
+          <div className="w-96 h-1 mt-4 bg-gray-700">
             <div
               style={{ width: `${progress}%` }}
               className="animate-pulse h-full bg-green-500 transition-width duration-1000"

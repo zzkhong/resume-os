@@ -118,3 +118,10 @@ body:before {
 ::-webkit-scrollbar-thumb:active {
   background: #15803d; /* Darker green when active */
 }
+
+@font-face {
+  font-family: "Silkscreen";
+  src: url("/fonts/Silkscreen-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

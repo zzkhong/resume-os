@@ -10,6 +10,7 @@ interface WindowBoxProps {
   onClick: () => void;
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   position: { x: number; y: number };
   isFocused: boolean;
 }
@@ -22,11 +23,12 @@ const WindowBox = ({
   children,
   className,
   position,
+  style,
   isFocused,
 }: WindowBoxProps) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
 
-  const style = {
+  const draggableStyle = {
     ...(transform
       ? {
           transform: `translate3d(${position.x + transform.x}px, ${
@@ -48,6 +50,7 @@ const WindowBox = ({
       style={{
         position: "absolute",
         ...style,
+        ...draggableStyle,
       }}
     >
       <div

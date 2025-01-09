@@ -1,6 +1,14 @@
 interface FileTree {
   name: string;
-  type: "folder" | "file" | "exe" | "github" | "linkedin" | "pdf" | "internet";
+  type:
+    | "folder"
+    | "file"
+    | "exe"
+    | "game"
+    | "github"
+    | "linkedin"
+    | "pdf"
+    | "internet";
   position?: {
     x: number;
     y: number;
@@ -11,6 +19,7 @@ export interface Window {
   id: string;
   fileId: string;
   title: string;
+  style?: string;
   position?: {
     x: number;
     y: number;
@@ -21,6 +30,10 @@ const files: Record<string, FileTree> = {
   terminal: {
     name: "Terminal",
     type: "exe",
+  },
+  snake: {
+    name: "Snake",
+    type: "game",
   },
   resource: {
     name: "Resource",
@@ -46,4 +59,20 @@ export const getAdjustedFileTrees = () => {
   );
 
   return files;
+};
+
+export const getWindowStyle = (id: string): React.CSSProperties => {
+  const windowSize: Record<string, React.CSSProperties> = {
+    snake: {
+      width: "400px",
+      height: "441px",
+    },
+  };
+
+  return (
+    windowSize[id] || {
+      width: "600px",
+      height: "400px",
+    }
+  );
 };

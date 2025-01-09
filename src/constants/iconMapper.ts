@@ -1,5 +1,6 @@
 import FileIcon from "@/components/icon/FileIcon";
 import FolderIcon from "@/components/icon/FolderIcon";
+import GameIcon from "@/components/icon/GameIcon";
 import GithubIcon from "@/components/icon/GithubIcon";
 import InternetIcon from "@/components/icon/InternetIcon";
 import LinkedInIcon from "@/components/icon/LinkedInIcon";
@@ -14,4 +15,5 @@ export const iconMapper: any = {
   github: GithubIcon,
   pdf: PDFIcon,
   internet: InternetIcon,
+  game: GameIcon,
 };
