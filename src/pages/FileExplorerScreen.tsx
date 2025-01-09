@@ -18,7 +18,7 @@ import DesktopFile from "@/components/file/DesktopFile";
 import {
   getAdjustedFileTrees,
   Window,
-  getWindowStyle,
+  getWindowClass,
 } from "@/constants/fileTree";
 import ContentMe from "@/components/window/ContentMe";
 import ContentResource from "@/components/window/ContentResource";
@@ -70,7 +70,6 @@ const FileExplorerScreen = () => {
           id: windowId,
           fileId: id,
           title: file.name,
-          style: getWindowStyle(id),
           position: file.position,
         };
 
@@ -132,7 +131,7 @@ const FileExplorerScreen = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex flex-col w-full h-full overflow-hidden">
       <TopBar onReset={handleReset} />
 
       <DndContext
@@ -140,7 +139,7 @@ const FileExplorerScreen = () => {
         onDragEnd={handleDragEnd}
         collisionDetection={closestCorners}
       >
-        <div className="flex-grow overflow-hidden relative">
+        <div className="flex-grow relative">
           {Object.keys(files).map((id) => (
             <DesktopFile
               key={id}
@@ -159,7 +158,11 @@ const FileExplorerScreen = () => {
               key={window.id}
               id={window.id}
               title={window.title}
-              style={window.style}
+              className={`${
+                window.id === "window-snake"
+                  ? "w-[350px] h-[350px]"
+                  : "w-[350px] h-[350px] sm:w-[600px] sm:h-[450px]"
+              }`}
               isFocused={window.id === focusWindow}
               onClick={() => handleWindowFocus(window.id)}
               onClose={() =>

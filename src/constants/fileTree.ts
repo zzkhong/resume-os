@@ -24,6 +24,7 @@ export interface Window {
   fileId: string;
   title: string;
   style?: React.CSSProperties;
+  className?: string;
   position?: {
     x: number;
     y: number;
@@ -69,18 +70,11 @@ export const getAdjustedFileTrees = () => {
   return files;
 };
 
-export const getWindowStyle = (id: string): React.CSSProperties => {
-  const windowSize: Record<string, React.CSSProperties> = {
-    snake: {
-      width: "400px",
-      height: "441px",
-    },
+export const getWindowClass = (id: string): string => {
+  const windowSize: Record<string, string> = {
+    // snake: "sm:w-[350px] sm:h-[300px] w-[400px] h-[401px]",
+    // default: "sm:w-[350px] sm:h-[350px] w-[600px] h-[400px]",
   };
 
-  return (
-    windowSize[id] || {
-      width: "600px",
-      height: "400px",
-    }
-  );
+  return windowSize[id] || windowSize["default"];
 };
