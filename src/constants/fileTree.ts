@@ -69,12 +69,3 @@ export const getAdjustedFileTrees = () => {
 
   return files;
 };
-
-export const getWindowClass = (id: string): string => {
-  const windowSize: Record<string, string> = {
-    // snake: "sm:w-[350px] sm:h-[300px] w-[400px] h-[401px]",
-    // default: "sm:w-[350px] sm:h-[350px] w-[600px] h-[400px]",
-  };
-
-  return windowSize[id] || windowSize["default"];
-};

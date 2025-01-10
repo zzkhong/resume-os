@@ -15,11 +15,7 @@ import WindowBox from "@/components/window/WindowBox";
 import TopBar from "@/components/topbar/Topbar";
 import CopyrightFooter from "@/components/footer/Footer";
 import DesktopFile from "@/components/file/DesktopFile";
-import {
-  getAdjustedFileTrees,
-  Window,
-  getWindowClass,
-} from "@/constants/fileTree";
+import { getAdjustedFileTrees, Window } from "@/constants/fileTree";
 import ContentMe from "@/components/window/ContentMe";
 import ContentResource from "@/components/window/ContentResource";
 import ContentTerminal from "@/components/window/ContentTerminal";
