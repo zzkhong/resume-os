@@ -37,7 +37,7 @@ export const experiences: Experience[] = [
     companyLink: "https://gxbank.my/",
     role: "Senior Web Engineer",
     description:
-      "Worked on developing scalable web applications and maintaining backend services.",
+      "Developed and launched Insurance Cyberfraud product. Also maintaining and expanding features on ops support case management portal and customer support CRM",
     caption: "In Progress",
   },
   {
@@ -45,7 +45,7 @@ export const experiences: Experience[] = [
     companyLink: "https://www.binance.com/en",
     role: "Web Engineer",
     description:
-      "Focused on crafting intuitive user interfaces with React and optimizing performance.",
+      "Development of different region flow for Binance Card Program(Discontinued), as well as feature integration for Binance Merchant Platform",
     caption: "2022-2023",
   },
   {
@@ -53,7 +53,7 @@ export const experiences: Experience[] = [
     companyLink: "https://www.paywatch.com.my/",
     role: "Fullstack Engineer",
     description:
-      "Focused on crafting intuitive user interfaces with React and optimizing performance.",
+      "Developed and launched Paywatch App(Earn Wage Access Service) as the founding team, as well as developing and maintaining the product website for the service",
     caption: "2021-2022",
   },
   {
@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
     companyLink: "https://upstackstudio.com/",
     role: "Mobile Engineer",
     description:
-      "Focused on crafting intuitive user interfaces with React and optimizing performance.",
+      "Developed and maintain MY Acson and Daikin GO (Air-con IOT mobile app), expanding user features such as outlet searching, promotional messages and maintainence scheduler",
     caption: "2020-2021",
   },
   {
@@ -69,7 +69,7 @@ export const experiences: Experience[] = [
     companyLink: "https://www.sony.com.my/electronics/corporate",
     role: "Software Engineer",
     description:
-      "Focused on crafting intuitive user interfaces with React and optimizing performance.",
+      "Worked with team of UX Engineers to develop Home UI, SONY TV Home Interface and support integration for popular application like YouTube, Netflix, Amazon Prime",
     caption: "2018-2020",
   },
   {
@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
     companyLink: "",
     role: "Intern",
     description:
-      "Focused on crafting intuitive user interfaces with React and optimizing performance.",
+      "Developed and launched AttendInk, an Attendance Taking App. Was responsible for the Android development of this project",
     caption: "2017",
   },
 ];
