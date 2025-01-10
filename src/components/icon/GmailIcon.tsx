@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub } from "react-icons/fa";
+import { BiLogoGmail } from "react-icons/bi";
 
 interface IconProps {
   title?: string;
@@ -7,17 +7,17 @@ interface IconProps {
   size?: number;
 }
 
-const GithubIcon: React.FC<IconProps> = ({ title, color, size }) => {
+const GmailIcon: React.FC<IconProps> = ({ title, color, size }) => {
   return (
     <div
       className={`flex flex-col items-center justify-center w-16 ${
-        color || "text-green-400"
+        color || "text-red-700"
       }`}
     >
-      <FaGithub className={`w-${size || 10} h-${size || 10}`} />
+      <BiLogoGmail className={`w-${size || 8} h-${size || 8}`} />
       <span className="mt-1 text-sm font-mono text-center">{title || ""}</span>
     </div>
   );
 };
 
-export default GithubIcon;
+export default GmailIcon;

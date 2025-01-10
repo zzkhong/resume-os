@@ -63,7 +63,7 @@ const WindowBox = ({
         {...listeners}
         {...attributes}
       >
-        <span className="text-base text-green-400">{title}</span>
+        <span className="text-base text-green-400">{title || ""}</span>
         <button onClick={onClose} className="text-green-400 hover:opacity-50">
           ✕
         </button>

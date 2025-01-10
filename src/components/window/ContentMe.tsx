@@ -2,6 +2,9 @@ import React from "react";
 import TabSection from "./TabSection";
 import TabExperience from "./TabExperience";
 import { experiences, sections } from "@/constants/careerData";
+import LinkedInIcon from "../icon/LinkedInIcon";
+import GithubIcon from "../icon/GithubIcon";
+import GmailIcon from "../icon/GmailIcon";
 
 const ContentMe = () => {
   const [activeTab, setActiveTab] = React.useState("about"); // Default to "About Me"
@@ -14,6 +17,24 @@ const ContentMe = () => {
     {
       id: "experience",
       label: "Experiences",
+    },
+  ];
+
+  const bottomLink = [
+    {
+      id: "linkedin",
+      icon: <LinkedInIcon />,
+      url: "https://www.linkedin.com/in/zzkhong/",
+    },
+    {
+      id: "github",
+      icon: <GithubIcon color="text-gray-700" size={8} />,
+      url: "https://github.com/zzkhong",
+    },
+    {
+      id: "gmail",
+      icon: <GmailIcon />,
+      url: "https://github.com/zzkhong",
     },
   ];
 
@@ -48,7 +69,7 @@ const ContentMe = () => {
         </div>
       </div>
 
-      {/* Sections */}
+      {/* Content */}
       <div className="mt-4">
         {activeTab === "about"
           ? sections.map((section, index) => (
@@ -62,6 +83,29 @@ const ContentMe = () => {
               <TabExperience key={index} job={job} />
             ))}
       </div>
+
+      <>
+        {activeTab === "about" ? (
+          <div className="flex items-center justify-center">
+            {bottomLink.map((link) => (
+              <div
+                key={link.id}
+                className="w-12 hover:scale-90 hover:opacity-80 transition"
+              >
+                {link.id === "gmail" ? (
+                  <a href="mailto:khongc7@gmail.com">{link.icon}</a>
+                ) : (
+                  <a target="_blank" href={link.url} rel="noopener noreferrer">
+                    {link.icon}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
+      </>
     </div>
   );
 };

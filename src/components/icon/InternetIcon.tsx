@@ -2,7 +2,7 @@ import React from "react";
 import { FaInternetExplorer } from "react-icons/fa";
 
 interface IconProps {
-  title: string;
+  title?: string;
 }
 
 const InternetIcon: React.FC<IconProps> = ({ title }) => {

@@ -27,7 +27,7 @@ const TabSection: React.FC<TabSectionProp> = ({ section, isReversed }) => (
       </h2>
     )}
 
-    <p className="w-2/3 text-gray-700 text-sm font-mono text-justify">
+    <p className="w-2/3 text-gray-700 text-sm font-mono text-justify leading-relaxed">
       {section.content.split("\n").map((line: string, i) => (
         <React.Fragment key={i}>
           {line}

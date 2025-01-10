@@ -20,13 +20,13 @@ export const sections: Section[] = [
     image: "/image/profile.jpg",
     title: "intro",
     content:
-      "I'm from a small town, and I discovered my interest in programming during my high school years. I started by learning HTML and CSS and later advanced to JavaScript, Python, and other programming languages.",
+      "Hey, I'm CK from Malaysia. been a Software Engineer since 2018. My interest in programming started back in high school when we learned Visual Basic. I've made a few showcases over the years, and this one is definitely the most customized and personal one yet! Feel free to play around and share any feedback.",
   },
   {
     id: "background",
     title: "MY Background",
     content:
-      "Web Development (HTML, CSS, JavaScript), Backend Development (Node.js, Python), Databases (MySQL, MongoDB), Other Skills (Git, Agile Development).\n\nIf you would like to get in touch, feel free to reach out to me at your.email@example.com.",
+      "Web Development (React, Next, TypeScript), Backend Development (Node, Go, PHP), Mobile Development (React Native) \n\nIf you would like to get in touch, Feel free to reach out to me using the contact info below.",
   },
 ];
 
