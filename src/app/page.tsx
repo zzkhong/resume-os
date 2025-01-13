@@ -7,7 +7,7 @@ import FileExplorerScreen from "@/pages/FileExplorerScreen";
 export default function Home() {
   const [bootComplete, setBootComplete] = React.useState<boolean>(false);
   const [isBootScreenVisible, setIsBootScreenVisible] =
-    React.useState<boolean>(false);
+    React.useState<boolean>(true);
 
   const handleBootComplete = () => {
     setBootComplete(true);
