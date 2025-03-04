@@ -36,12 +36,10 @@ export default function Home() {
 
   return (
     <main className="w-full h-screen relative md:overflow-hidden">
-      {bootComplete || !isBootScreenVisible ? (
-        isMobile ? (
-          <ContentMe />
-        ) : (
-          <FileExplorerScreen />
-        )
+      {isMobile ? (
+        <ContentMe />
+      ) : bootComplete || !isBootScreenVisible ? (
+        <FileExplorerScreen />
       ) : (
         <BootUpScreen onComplete={handleBootComplete} />
       )}
