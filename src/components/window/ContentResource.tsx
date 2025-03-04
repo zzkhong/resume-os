@@ -23,6 +23,13 @@ const ContentResource: React.FC<ContentResourceProp> = ({ onRedirect }) => {
       link: "https://github.com/ashishps1/awesome-system-design-resources",
       message: "Opening Awesome System Design",
     },
+    {
+      id: "books",
+      name: "Books Catalogue",
+      type: "internet",
+      link: "https://github.com/rishabhmodi03/BOOKS",
+      message: "Opening Books Catalogue",
+    },
   ];
 
   return (

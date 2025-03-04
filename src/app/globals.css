@@ -40,7 +40,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  /* Apply only on screens larger than 1024px (lg breakpoint) */
+  /* Apply only on screens larger than specified breakpoint */
   body:after {
     content: "";
     position: absolute;

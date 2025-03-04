@@ -20,7 +20,7 @@ export const sections: Section[] = [
     image: "/image/profile.jpg",
     title: "intro",
     content:
-      "Hey, I'm CK from Malaysia. been a Software Engineer since 2018. My interest in programming started back in high school when we learned Visual Basic. I've made a few showcases over the years, and this one is definitely the most customized and personal one yet! Feel free to play around and share any feedback.",
+      "Hey, I'm CK from Malaysia. been a Software Engineer since 2018. My interest in programming started back in high school when we learned Visual Basic. I've made a few showcases over the years, and this one is definitely the most customized and personal one yet! For the best experience, try it out on both desktop and mobile — you might notice some differences!",
   },
   {
     id: "background",
