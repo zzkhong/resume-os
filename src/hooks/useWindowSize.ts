@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 
 const useWindowSize = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const searchParams = new URLSearchParams(window.location.search);
-  const forceDesktop = searchParams.get("desktop") === "true";
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const searchParams = new URLSearchParams(window.location.search);
+    const forceDesktop = searchParams.get("desktop") === "true";
+
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768 && !forceDesktop);
     };
@@ -14,7 +16,7 @@ const useWindowSize = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [forceDesktop]);
+  }, []);
 
   return isMobile;
 };
