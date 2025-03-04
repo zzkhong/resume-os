@@ -3,8 +3,11 @@
 import React from "react";
 import BootUpScreen from "@/pages/BootUpScreen";
 import FileExplorerScreen from "@/pages/FileExplorerScreen";
+import useWindowSize from "@/hooks/useWindowSize";
+import ContentMe from "@/components/window/ContentMe";
 
 export default function Home() {
+  const isMobile = useWindowSize();
   const [bootComplete, setBootComplete] = React.useState<boolean>(false);
   const [isBootScreenVisible, setIsBootScreenVisible] =
     React.useState<boolean>(true);
@@ -32,12 +35,16 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-screen relative overflow-hidden">
+    <main className="w-full h-screen relative md:overflow-hidden">
       {bootComplete || !isBootScreenVisible ? (
-        <FileExplorerScreen />
+        isMobile ? (
+          <ContentMe />
+        ) : (
+          <FileExplorerScreen />
+        )
       ) : (
         <BootUpScreen onComplete={handleBootComplete} />
       )}
-    </div>
+    </main>
   );
 }
