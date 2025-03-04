@@ -5,8 +5,11 @@ import { experiences, sections } from "@/constants/careerData";
 import LinkedInIcon from "../icon/LinkedInIcon";
 import GithubIcon from "../icon/GithubIcon";
 import GmailIcon from "../icon/GmailIcon";
+import useWindowSize from "@/hooks/useWindowSize";
+import DownloadIcon from "../icon/DownloadIcon";
 
 const ContentMe = () => {
+  const isMobile = useWindowSize();
   const [activeTab, setActiveTab] = React.useState("about"); // Default to "About Me"
 
   const tabs = [
@@ -16,7 +19,7 @@ const ContentMe = () => {
     },
     {
       id: "experience",
-      label: "Experiences",
+      label: "Career",
     },
   ];
 
@@ -46,10 +49,10 @@ const ContentMe = () => {
           <a
             href="/file/resume.pdf"
             download
-            className="bg-blue-500 text-white py-1 px-3 rounded-lg text-sm 
-            font-bold font-silk hover:opacity-80 invisible sm:visible"
+            className="md:bg-blue-500 text-white py-1 px-3 rounded-lg text-sm 
+            font-bold font-silk hover:opacity-80"
           >
-            Download Resume
+            {isMobile ? <DownloadIcon /> : "Download Resume"}
           </a>
         </div>
         <div className="flex justify-end space-x-5">
@@ -57,7 +60,7 @@ const ContentMe = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-sm sm:text-base font-bold font-silk text-gray-500 min-w-20 ${
+              className={`text-sm sm:text-base font-bold font-silk text-gray-500 whitespace-nowrap min-w-20 ${
                 activeTab === tab.id
                   ? "underline text-gray-900"
                   : "no-underline"
