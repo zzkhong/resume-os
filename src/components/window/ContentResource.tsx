@@ -30,6 +30,13 @@ const ContentResource: React.FC<ContentResourceProp> = ({ onRedirect }) => {
       link: "https://github.com/rishabhmodi03/BOOKS",
       message: "Opening Books Catalogue",
     },
+    {
+      id: "design_pattern",
+      name: "Design Pattern",
+      type: "internet",
+      link: "https://refactoring.guru/design-patterns/go",
+      message: "Opening Design Pattern",
+    },
   ];
 
   return (
