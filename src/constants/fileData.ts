@@ -28,11 +28,16 @@ const files = [
     message: "Opening Design Pattern",
   },
   {
-    id: "rn_interview",
-    name: "React Native Revision",
+    id: "leetcode_pattern",
+    name: "LeetCode Patterns",
     type: "internet",
-    link: "https://www.notion.so/zzkhong/Notes-20305f97069b80b69822ffb388e351dc?source=copy_link",
-    message: "Opening RN Revision",
+    link: "https://blog.algomaster.io/p/15-leetcode-patterns",
+  },
+  {
+    id: "sd_pattern",
+    name: "System Design Pattern",
+    type: "internet",
+    link: "https://blog.algomaster.io/p/30-system-design-concepts",
   },
 ];
 
