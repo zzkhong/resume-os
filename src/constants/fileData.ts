@@ -32,12 +32,14 @@ const files = [
     name: "LeetCode Patterns",
     type: "internet",
     link: "https://blog.algomaster.io/p/15-leetcode-patterns",
+    message: "Opening LeetCode Patterns",
   },
   {
     id: "sd_pattern",
     name: "System Design Pattern",
     type: "internet",
     link: "https://blog.algomaster.io/p/30-system-design-concepts",
+    message: "Opening System Design Pattern",
   },
 ];
 
